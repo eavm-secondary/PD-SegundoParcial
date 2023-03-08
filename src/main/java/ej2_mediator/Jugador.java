@@ -4,7 +4,6 @@ public abstract class Jugador {
     private String alias;
     private String nombre;
     private String ranking;
-    private IMediatorJuego chatEquipo;
     private IMediatorJuego chatTodos;
 
     public Jugador(String alias, String nombre, String ranking) {
@@ -37,12 +36,8 @@ public abstract class Jugador {
         this.ranking = ranking;
     }
 
-    public void setChatEquipo(IMediatorJuego chatEquipo) {
-
-        this.chatEquipo = chatEquipo;
-    }
-
     public void setChatTodos(IMediatorJuego chatTodos) {
+        chatTodos.addJugador(this);
         this.chatTodos = chatTodos;
     }
 
@@ -50,5 +45,7 @@ public abstract class Jugador {
         System.out.println(this.nombre+" recibio un mensaje de "+emisor.nombre+": "+msg);
     }
 
-    public abstract void sendMessage(String msg);
+    public void sendMessageTodos(String msg){
+        chatTodos.send(msg,this);
+    }
 }

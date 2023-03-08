@@ -6,8 +6,12 @@ import java.util.List;
 public class ChatJuego implements IMediatorJuego{
     private List<Jugador> jugadoresList = new ArrayList<>();
     @Override
-    public void send(String msg) {
-
+    public void send(String msg, Jugador emisor) {
+        for (Jugador jugador : jugadoresList) {
+            if (!jugador.equals(emisor)){
+                jugador.recieveMessage(msg,emisor);
+            }
+        }
     }
 
     @Override
