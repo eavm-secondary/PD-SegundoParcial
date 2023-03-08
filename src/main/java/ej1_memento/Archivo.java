@@ -3,6 +3,7 @@ package ej1_memento;
 public class Archivo {
     private String nombre;
     private String contenido = "";
+    private int version = 0;
 
     public Archivo(String nombre) {
         this.nombre = nombre;
@@ -25,17 +26,24 @@ public class Archivo {
     }
 
     public void addLinea(String texto) {
+        contenido += texto + '\n';
         if (texto.split(" ").length >= 5) {
             createBackup();
         }
-        contenido += texto + '\n';
 
     }
 
     public void createBackup() {
+        version++;
         Archivo backup = new Archivo(this.nombre);
         backup.setContenido(this.contenido);
-        RegistroVersiones.getInstance().saveMemento("Version1",new MementoArchivo(backup));
+        RegistroVersiones.getInstance().saveMemento("version"+version, new MementoArchivo(backup));
+    }
+
+    public void restoreBackup(String alias){
+        Archivo archivoRestaurado = RegistroVersiones.getInstance().getMemento(alias).getArchivo();
+        this.nombre = archivoRestaurado.getNombre();
+        this.contenido = archivoRestaurado.getContenido();
     }
 
     public void showInfo() {
