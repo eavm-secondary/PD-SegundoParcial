@@ -1,0 +1,6 @@
+Se tiene una base de datos que contiene estudiantes(ci, nombre, fecha
+nacimiento, carrera), se desea tener 3 tipos de ordenamiento de esta base de datos
+
+estrategia 1---> ordenar por ci
+estrategia 2 ---> ordenar por nombre
+estrategia 3 ---> ordenar carrera

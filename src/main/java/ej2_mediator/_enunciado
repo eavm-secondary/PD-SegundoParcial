@@ -1,0 +1,4 @@
+Se tiene un chat de juegos, donde solo se admiten jugadores del mismo
+equipo (alias, nombre, rankins), y otro donde esta el equipo contrario Docentes (alias,
+nombre, rankins) los estudiantes pueden decidir si su mensaje es enviado a todos del
+mismo equipo o asi el mensaje es enviado a todos los jugadores (ambos equipos)
